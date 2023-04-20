@@ -1,0 +1,3 @@
+class QrScanner < ApplicationRecord
+    
+end
