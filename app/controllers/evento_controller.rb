@@ -3,7 +3,7 @@ class EventoController < ApplicationController
         @evento = Evento.all
         render json: @evento
       end 
-  
+  # esto crea los eventos
       def create
         @evento = Evento.new(evento_params)
         if @evento.save
