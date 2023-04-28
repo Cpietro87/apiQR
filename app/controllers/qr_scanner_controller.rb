@@ -5,7 +5,19 @@ class QrScannerController < ApplicationController
     end 
 
     def create
-      @qr_scanner = QrScanner.new(qrscanner_params)
+
+      if solititanro != nil
+        buscanroentrada = QrScanner.where(nroentrada: 1)
+        if buscanroentrada == nil
+          buscanroentrada.nroentrada = 1
+        else
+          buscanroentrada.nroentrada buscanroentrada.nroentrada + 1
+          buscanroentrada.save
+          render json : buscanroentrada.nroentrada
+        end
+      end
+
+      @qr_scanner = QrScanner.new(qrscanner_pagrams)
       buscar = QrScanner.find_by_nombre(params[:nombre])
       if buscar != nil
         render json: { message: "El usuario ya está registrado", user: buscar }, status: :ok

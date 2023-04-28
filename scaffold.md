@@ -38,3 +38,7 @@ Crear TipoTipo (tipo de entrada, de organizador)////
     rails generate controller Tipotipo///
     rails generate model Tipotipo nombre:string///
 
+agregar campo qr_scanner nroentrada
+rails generate migration AddColumnScannerNroentrada
+add_column :qrscanners, :nroentrada, :string
+
