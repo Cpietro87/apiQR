@@ -6,11 +6,18 @@ class QrScannerController < ApplicationController
 
     def create
       @qr_scanner = QrScanner.new(qrscanner_params)
-      if @qr_scanner.save
-        render json: @qr_scanner, status: :created
+      buscar = QrScanner.find_by_nombre(params[:nombre])
+      if buscar != nil
+        render json: { message: "El usuario ya está registrado", user: buscar }, status: :ok
       else
-        render json: @qr_scanner.errors, status: :unprocessable_entity
-      end
+        if @qr_scanner.save
+          render json: @qr_scanner, status: :created
+        else
+          render json: @qr_scanner.errors, status: :unprocessable_entity
+        end
+        
+      end 
+    
     end
 
     private
