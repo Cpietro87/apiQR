@@ -5,7 +5,7 @@ Eventos
 rails generate model Evento nombre:string direccion:string fecha:date
 rails generate controller Evento
 Usuarios
-rails generate model User nombre:string apellido:string dni:string email:string password:string telefono:string
+rails generate model User nombre:string apellido:string correo:string:uniq password_digest:string telefono:string
 rails generate controller User
 
 agregado de campos a qr_scanners
